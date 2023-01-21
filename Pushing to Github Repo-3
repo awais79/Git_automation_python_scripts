@@ -1,0 +1,27 @@
+import git
+from git import Repo
+from github import Github
+
+
+# Setting the origin and cloning the Repo.
+remoteurl = "Github Path"
+localfolder = "Local Path"
+myrepo = git.Repo.clone_from(remoteurl, localfolder)
+
+# Creating a Demo text file in Local Repo.
+with open('Local_PATH', 'w') as f:
+    f.write("This is First Demo file for git automation.")
+
+# Initializing and Commiting the local Repo.
+repo = Repo.init(localfolder)
+repo.index.add(["Demo1.txt"])
+repo.index.commit('commit for python')
+
+# Defining the origin.
+origin = repo.remote(name='origin')
+
+# Pushing Local Repo to git Repo.
+origin.push()
+
+# Pulling the Git Repo to Local Repo.
+origin.pull()
