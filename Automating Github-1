@@ -1,0 +1,34 @@
+from github import Github
+
+# attaching python with github
+token = "TOKEN_HERE"
+g = Github(token)
+
+# to get all the repos in github
+for repo in g.get_user().get_repos():
+    print(repo.full_name)
+
+# to get a specific repo in github
+repo = g.get_repo("Reponame")
+
+# to get the contents of the specific repo in github
+content = repo.get_contents("")
+for content_file in content:
+    print(content_file)
+
+# Again to get a specific repo
+repo = g.get_repo("Reponame")
+
+# to create a file in the repo
+repo.create_file("test1.txt", "commit", "This is a testing file.")
+
+# Again to get the contents of the specific repo in github
+content = repo.get_contents("")
+for content_file in content:
+    print(content_file)
+
+# select a specific file
+content = repo.get_contents("test1.txt")
+
+# to delete a specific file from github
+repo.delete_file(content.path, "remove test", content.sha, branch="main")
