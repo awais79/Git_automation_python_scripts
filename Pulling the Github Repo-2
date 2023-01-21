@@ -1,0 +1,33 @@
+import git
+from github import Github
+from git import Repo
+
+# attaching python with github
+token = "Token_Here"
+g = Github(token)
+
+# to get all the repos in github
+for repo in g.get_user().get_repos():
+    print(repo.full_name)
+    
+# to get a specific repo in github
+repo = g.get_repo("Reponame")
+
+content = repo.get_contents("")
+for content_file in content:
+    print(content_file)
+
+# to create a file in the repo
+repo.create_file("test1.txt", "commit", "This is a testing file.")
+
+localRepo = "local Path"
+remoteurl = "Github Path"
+
+myrepo = git.Repo.clone_from(remoteurl, localRepo)
+
+origin = local.remote(name = 'origin')
+
+# to create a file in the repo
+repo.create_file("test2.txt", "commit", "This is a testing file.")
+
+origin.pull()
