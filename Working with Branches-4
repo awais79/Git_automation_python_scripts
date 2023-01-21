@@ -1,0 +1,23 @@
+import git
+import github
+from github import Github
+from git import Repo
+from git import refs
+
+# attaching python with github
+token = "TOKEN_HERE"
+g = Github(token)
+
+# to get a specific repo in github
+repo = g.get_repo("Reponame")
+
+content = repo.get_contents("")
+for content_file in content:
+    print(content_file)
+  
+list(repo.get_branches())
+
+Main = repo.get_branch("main")
+Main.protected
+
+repo.get_branch("main").commit.sha
