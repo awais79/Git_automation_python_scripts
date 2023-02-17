@@ -1,0 +1,50 @@
+1. Install Git-python library using Pycharm.
+
+2. Initialize the local repo and give file path but replace "\" with "/".
+
+3. Index the file to be commited.
+    INDEXING: 
+      It means adding the file to the staging area between local and Git repository.
+      
+4. Now create a new text file in local repo using python.
+    CREATING A NEW FILE:  
+      Follow the link: {https://www.pythontutorial.net/python-basics/python-create-text-file/}
+
+5.  NOTE:   To push or pull from a remote git repo, first you have to set the origin. This is done by cloning. 
+            Cloning git repo in local repo automatically set the origin for push / pull.
+
+6. NOTE - BRANCHES: To get the ref for an existing branch:
+                                            {{ "repo.get_git_ref( "heads/branchnamehere")" }}
+                    To create a new branch:
+                                            {{ "" }}
+                    
+      
+-- -- WORKING WITH BRANCHES:
+             {{ # List all branches
+                list(repo.get_branches())
+
+                # Create a new branch
+                repo.get.branch('my_new_branch')
+
+                # To checkout to a branch:
+                repo.get.checkout('branch_name')  
+                
+                # Get protection status of a branch:
+                branch.protected
+            }}
+            
+-- -- MERGING BRANCHES:
+        To Merge the current branch to the master (or any specified) branch:
+           {{  import  git 
+
+                repo = git.Repo('.')
+                master = repo.branches['master']
+                current = repo.branches['feature']
+                root = repo.merge_base(current, master)
+                repo.index.merge_tree(master, base=root)
+                repo.index.commit('merging master into current branch', parent_commits=(current.commit, master.commit))
+            }}
+            
+-- -- WORKING WITH REPOSITORIES:
+        follow the link: {{  "https://pygithub.readthedocs.io/en/latest/examples/Repository.html"  }}
+                
